@@ -4,6 +4,7 @@ import './App.css';
 import ColorSelector from './components/ColorSelector';
 import CustomizePage from './components/CustomizePage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import BackgroundImage from './components/BackgroundImage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={ColorSelector}/>
         <Route path="/customize/" component={CustomizePage}/>
+        <Route path="/backgroundimage" component={BackgroundImage}/>
         <Route path="/customize/:myColor" component={CustomizePage}/>
         <Redirect to="/"/>
       </Switch>
