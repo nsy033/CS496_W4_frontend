@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BackgroundImage from '../BackgroundImage';
 import './style.css';
 
 const CustomizePage = ({location}) => {
@@ -16,9 +17,10 @@ const CustomizePage = ({location}) => {
 
   return (
     <div>
-      <h1>CustomizePage</h1>
+      <BackgroundImage></BackgroundImage>
+      {/* <h1>CustomizePage</h1>
       <h2>The Color You Picked: {location.hash}</h2>
-      <h2>RGBA: {hexToRGB(location.hash, 1)}</h2>
+      <h2>RGBA: {hexToRGB(location.hash, 1)}</h2> */}
     </div>
   );
 }

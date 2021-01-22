@@ -23,7 +23,10 @@ const ColorPick = ({match}) => {
             <h2>Choose Your Color</h2>
             <ColorSelector pallet={picker_data} selectedColor={pickedColor} />
             <p>{myColor}</p>
-            <Link to={`/customize/${myColor}`}>
+            {/* <Link to={`/customize/${myColor}`}>
+                <button>Go to Next Page</button>
+            </Link> */}
+            <Link to="/backgroundimage">
                 <button>Go to Next Page</button>
             </Link>
         </div>
