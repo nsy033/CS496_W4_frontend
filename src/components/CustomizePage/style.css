@@ -1,59 +1,36 @@
-/* body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-#container {
-  height: 100%;
-  width: 100%;
-
-}
-
-#product-svg {
-  position: relative;
-  z-index: 2;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  mix-blend-mode: multiply;
-}
-
-#product-shape {
-  fill: #DBED64;
-}
-
-#background-image {
+#text-part {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 500px;
-  height: auto;
-  z-index: 1;
-}
-
-.colors {
-  display: flex;
-  position: fixed;
-  bottom: 2em;
-  right: 2em;
+  left: 0px;
+  width: 40.5%;
+  height: 72%;
   z-index: 3;
 }
 
-.color {
-  height: 36px;
-  width: 36px;
-  margin-left: 0.5em;
-  border-radius: 18px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-  border: 2px solid #aaa;
-  cursor: pointer;
-} */
+#text-input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 3;
+}
+
+#text-size-input {
+  position: absolute;
+  top: 0px;
+  left: 200px;
+  z-index: 3;
+}
+
+#text-reset-btn {
+  position: absolute;
+  top: 0px;
+  left: 400px;
+  z-index: 3;
+}
+
+#image-input{ 
+  position: absolute;
+  top: 0px;
+  left: 600px;
+  z-index: 3;
+}

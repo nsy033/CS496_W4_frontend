@@ -31,7 +31,7 @@ const CustomizePage = ({location}) => {
 
   console.log(location.hash);
   
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState('');
     const onChangeInput = e => {
     setInputText(e.target.value);
   };
@@ -44,6 +44,22 @@ const CustomizePage = ({location}) => {
   const onReset = () => {
     setInputText("");
   };
+
+  const [userImage, setUserImage] = useState('');
+
+
+  const uploadHandler = (event) => {
+    const data = new FormData();
+    data.append('file', event.target.files[0]);
+    axios.post('http://192.249.18.241:4000/uploads', data)
+    .then(response=>{
+      console.log('get path from server: ' + response.data);
+      setUserImage(response.data);
+      })
+    .catch(error =>{
+      console.log(error)
+    });
+  }
 
 
   let [myColor, pickedColor] = useState('');  
@@ -67,26 +83,32 @@ const CustomizePage = ({location}) => {
       <h1>CustomizePage</h1>
       <h2>The Color You Picked: {location.hash}</h2>
       <BackgroundImage colorInfo={elements}></BackgroundImage>
-      <ColorSelector pallet={picker_data} selectedColor={pickedColor} />
-      <div> 
-        <input
+
+      <div id="text-part"> 
+        <input id="text-input"
             type="text"
             value={inputText}
             placeholder="입력하세요"
             onChange={onChangeInput}
         /> 
 
-        <button onClick={onReset}>Reset</button>
-        <input 
+        <button id="text-reset-btn" onClick={onReset}>Reset</button>
+        <input id="text-size-input"
             type="number"
             value={inputText1}
             placeholder="글씨 크기"
             onChange={onChangeInput1}
-            
         />
+        <input type="file" id="image-input" onChange={uploadHandler}/>
+
         <Draggable>
-            <h1 style = {{color: `${myColor}`, fontSize:Number(`${inputText1}`)}}>{inputText}</h1>
+          <h1 style = {{color: `${myColor}`, fontSize:Number(`${inputText1}`)}}>{inputText}</h1>
         </Draggable>
+        <Draggable>
+          <img src={'http://192.249.18.241:4000/' + userImage} alt=""></img>
+        </Draggable>
+      <ColorSelector id="text-colorSelector" pallet={picker_data} selectedColor={pickedColor} />
+      
       </div>
     </div>
   );
