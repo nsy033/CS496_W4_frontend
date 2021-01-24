@@ -80,8 +80,10 @@ const CustomizePage = ({location}) => {
   
   return (
     <div>
+      <button>send</button>
       <h1>CustomizePage</h1>
       <h2>The Color You Picked: {location.hash}</h2>
+
       <BackgroundImage colorInfo={elements}></BackgroundImage>
 
       <div id="text-part"> 

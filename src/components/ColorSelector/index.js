@@ -6,8 +6,10 @@ import axios from 'axios';
 import './style.css';
 
 const ColorPick = ({match}) => {
+ 
 
     let [myColor, pickedColor] = useState('');
+
     let picker_data = {
         col: 12,
         row: 12,
@@ -18,6 +20,7 @@ const ColorPick = ({match}) => {
         title: 'COLORS',
         cellControl: 4
     }
+
 
     return (
         <div>
