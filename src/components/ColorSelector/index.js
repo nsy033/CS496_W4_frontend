@@ -9,9 +9,11 @@ import './style.css';
 
 
 const ColorPick = ({match}) => {
+ 
 
     let [myColor, pickedColor] = useState('');
     
+
     let picker_data = {
         col: 12,
         row: 12,
@@ -37,11 +39,13 @@ const ColorPick = ({match}) => {
     setInputText("");
   };
 
-
+  
 
     return (
         <div>
              <div>
+               {/* <h2>여기 {window.localStorage.getItem('name')} </h2> */}
+               <h2>{window.sessionStorage.getItem('name')}</h2>
                 <h2>Choose Your Color</h2>
                 <ColorSelector pallet={picker_data} selectedColor={pickedColor} />
                 <p>{myColor}</p>
