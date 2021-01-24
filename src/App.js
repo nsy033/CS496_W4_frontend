@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import BackgroundImage from './components/BackgroundImage';
 
 function App() {
+
   return (
     <BrowserRouter>
       <Switch>
