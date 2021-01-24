@@ -7,8 +7,6 @@ import Login from './components/Login';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import BackgroundImage from './components/BackgroundImage';
 
-
-
 class App extends Component{
   constructor(props){
     super(props)
@@ -57,6 +55,7 @@ class App extends Component{
 
     return(
       <BrowserRouter>
+
       <Switch>
         <Route path="/" exact component={Login}/>
         <Route path="/customize/" component={CustomizePage}/>
@@ -72,55 +71,4 @@ class App extends Component{
   }
 }
 
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <Switch>
-//         <Route path="/" exact component={ColorSelector}/>
-//         <Route path="/customize/" component={CustomizePage}/>
-//         <Route path="/backgroundimage" component={BackgroundImage}/>
-//         <Route path="/customize/:myColor" component={CustomizePage}/>
-//         <Route path="/login/" component={Login}/>
-        
-//         <Redirect to="/" />
-//       </Switch>
-//     </BrowserRouter>
-//   );
-// }
-
 export default App;
-
-// import axios from "axios";
-// import React, { useState, useEffect} from 'react';
-// const App = () => {
-//   const [data, setData] = useState(null);
-//   useEffect(() => {
-//     const getData = async () => {
-//       const datas = await axios.get("http://192.249.18.222:4000/testcrawling/all");
-//       setData(datas.data);
-//     };
-//     getData();
-//   }, []);
-//   useEffect(() => {
-//     console.log(data);
-//   }, [data]);
-//   if (data === null) {
-//     return <div>Load..</div>;
-//   } else {
-//     console.log(data);
-//     return (
-//       <div>
-//         {data.map((ele) => (
-//           <>
-//             <div>
-//               현재 {ele.text}의 현황 : 
-//             </div>
-//             <br />
-//           </>
-//         ))}
-//       </div>
-//     );
-//   }
-// };
-// export default App;
