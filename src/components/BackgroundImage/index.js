@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import './style.css';
+import path from './background_clothes.png';
 
 class BackgroundImage extends Component {
 
     componentDidMount() {
          // Reference the color shape that was drawn over the image
          const overlay = document.getElementById("product-shape");
+         overlay.style.fill = this.props.colorInfo[0];
 
          // Click on a color
          var el = document.getElementsByClassName("color");
          for (var i = 0; i < el.length; i++) {
              el[i].onclick = changeColor;
-             debugger;
          }
  
          function changeColor(e) {
@@ -21,29 +22,28 @@ class BackgroundImage extends Component {
              overlay.style.fill = hex;
          }
  
-         const styles = {
-             background : '#e1e851'
-         };
     }
 
     render () {
 
     return (
         <div id="customize">
+        
             <div id="container">
-            <svg id="product-svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 850">
+            <svg id="product-svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 350">
                 <defs/>
                 <path id="product-shape" d="M110.35,11.79c2.05,15.17,14.44,26.71,29,27.62,15.88,1,30.55-10.9,32.94-27.48a27.8,27.8,0,0,0,3.78,3.23,31.71,31.71,0,0,0,10.65,4.76C194,22,202.37,24.31,209,30.15a58.3,58.3,0,0,1,7.29,8.13,37.31,37.31,0,0,1,4.34,6.87s1.65,4.13,2.29,5.91c1.47,4.09,6.34,18.63,10.89,40.81,4.83,23,9.13,42.48,11.69,57.09,6.44,36.81,7.61,50.16,8.21,55.13,1.58,13,4.44,38.28,4.84,40.27a17.83,17.83,0,0,1,.21,3.6,1,1,0,0,1-.23.66c-.24.26-.63.75-.78.76-.06.56-.09.88-.16,1.83a76.45,76.45,0,0,0,0,8.63c.12,2.65.35,6,.81,10a.94.94,0,0,1-1.13,1.21c-2.64-.07-4.84-.08-6.44-.08-2.81,0-5.87.13-12,.37-.65,0-1.87.07-3.48.2a3.31,3.31,0,0,1-1.38.12,2.43,2.43,0,0,1-1.33-1.05,4.41,4.41,0,0,1-.69-2.52,54.78,54.78,0,0,0-.8-7.33,22.93,22.93,0,0,0-2.46-8.08c-.57-1-1.09-1.78-1.09-1.78-1.26-1.84-2-2.31-2.92-3.84a13.69,13.69,0,0,1-1.09-2.29c-1.79-4.53-4-11.76-4.11-12.21a110.24,110.24,0,0,1-2.37-11.27c-4.27-31.61-7.67-104.61-8.23-110,.59,5.7,3.17,110.56,3.25,114.4.24,12.35-.06,10.87.14,12.12a52.42,52.42,0,0,1-.07,8.06,4.78,4.78,0,0,1-.69,2.35,4.3,4.3,0,0,1-.83,1q-1.89,10.13-3.79,20.25a4,4,0,0,1-1,.62,4.49,4.49,0,0,1-2,.32c-4.61-.24-9.25.44-13.84-.07-4.86-.55-9.78-.43-14.67-.66-7.38-.35-9.47-.16-25.28-.11-18.38,0-15.51-.22-25.1-.08-10.67.16-13.59.48-28.4.81-6.94.15-12.64.22-16.43.26a4.43,4.43,0,0,1-2.06-.22,4.29,4.29,0,0,1-1.39-.85,4.69,4.69,0,0,1-.33-.81,9.28,9.28,0,0,1-.22-2.53c0-.34,0-.85-.11-1.46q-.69-4.06-1.51-8.26-.63-3.27-1.31-6.44a3.68,3.68,0,0,0-.63-1.12A8.93,8.93,0,0,1,72,248a2.68,2.68,0,0,1-.46-1c-.36-5.42-.14-9.2-.08-13.14.13-8.56.43-15.92.48-17.94C72.27,199.55,76,110.49,76,109.4c-1.34,9.47-1.13,56.89-8.44,104.42a179.29,179.29,0,0,1-3.73,19,57.35,57.35,0,0,1-3.64,10.72c-1.16,2.69-2.2,4.86-2.94,6.33a13.58,13.58,0,0,0-1.45,1.56,15,15,0,0,0-1.15,1.73,22.54,22.54,0,0,0-1.94,6.77c-.35,2.87-.77,5.93-1.3,9.74a2.89,2.89,0,0,1-.67,1.11,2.94,2.94,0,0,1-.8.55c-.67,0-1.65.08-2.84.09-4.61.07-7.36-.32-10.77-.52a83.45,83.45,0,0,0-8.6-.06,2.76,2.76,0,0,1-1.3.08,1.37,1.37,0,0,1-1-.43,1.3,1.3,0,0,1-.13-1.06c.14-2,.26-4,.35-6,.19-4.52.23-8.87.15-13a1.65,1.65,0,0,0-.3-1c-.22-.28-.48-.36-.68-.74a1.79,1.79,0,0,1-.16-.56,63.41,63.41,0,0,1,.42-7.19c.3-3.88.82-9.71,1.75-16.78,1-7.46,1.88-12.25,2.88-18,2.64-15.28,2.54-17.83,4.49-29.7C36,165.85,37,161.94,40.81,144.09,47.08,114.62,46.87,112.83,52,89c2-9.23,5-22.8,9-39.37a34.32,34.32,0,0,1,5-10.25,37.76,37.76,0,0,1,6.92-7.21c2.88-2.32,5.73-3.76,11.31-6.54,6.66-3.31,10-5,13.07-6,2.86-.91,5.52-2.36,8.29-3.51a9.11,9.11,0,0,0,3-2A8.89,8.89,0,0,0,110.35,11.79Z"/>
             </svg>
-            <img className="background_image" id="background-image" src="./images/background_clothes.png" alt=""/>
+            <img id="background-image" src={path} alt=""></img>
             </div>
             
             <div className="colors">
-                <div className="color" style={{background: '#e1e851'}} data-hex="#e1e851"></div>
-                <div className="color" style={{background: '#8cd147'}} data-hex="#8cd147"></div>
-                <div className="color" style={{background: '#4a9ccf'}} data-hex="#4a9ccf"></div>
-                <div className="color" style={{background: '#661f45'}} data-hex="#661f45"></div>
-                <div className="color" style={{background: '#1e2024'}} data-hex="#1e2024"></div>
+                <div className="color" style={{background: this.props.colorInfo[0]}} data-hex={this.props.colorInfo[0]}></div>
+                <div className="color" style={{background: this.props.colorInfo[1]}} data-hex={this.props.colorInfo[1]}></div>
+                <div className="color" style={{background: this.props.colorInfo[2]}} data-hex={this.props.colorInfo[2]}></div>
+                <div className="color" style={{background: this.props.colorInfo[3]}} data-hex={this.props.colorInfo[3]}></div>
+                <div className="color" style={{background: this.props.colorInfo[4]}} data-hex={this.props.colorInfo[4]}></div>
+                <div className="color" style={{background: this.props.colorInfo[5]}} data-hex={this.props.colorInfo[5]}></div>
             </div>
             
         </div>
