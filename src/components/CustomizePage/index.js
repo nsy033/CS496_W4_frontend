@@ -4,10 +4,11 @@ import ColorSelector from 'react-color-selector';
 import Draggable from 'react-draggable';
 import axios from 'axios';
 import './style.css';
+import { useScreenshot } from "use-screenshot-hook";
+import Modal from '../Modal';
+import Loading from '../Loading';
 
 const CustomizePage = ({location}) => {
-
-  // var colorInfo = [];
 
   const [colorInfo, setColorInfo] = useState({});
   useEffect(()=>{
@@ -47,7 +48,6 @@ const CustomizePage = ({location}) => {
 
   const [userImage, setUserImage] = useState('');
 
-
   const uploadHandler = (event) => {
     const data = new FormData();
     data.append('file', event.target.files[0]);
@@ -60,7 +60,6 @@ const CustomizePage = ({location}) => {
       console.log(error)
     });
   }
-
 
   let [myColor, pickedColor] = useState('');  
   let picker_data = {
@@ -78,13 +77,34 @@ const CustomizePage = ({location}) => {
   elements[0] = location.hash;
   for(i=0; i<colorInfo.length; i++) elements[i+1] = colorInfo[i];
   
+  const { image, takeScreenshot } = useScreenshot();
+
+  const [modalState, setModalState] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const openModal = () => {
+    setModalState(true);
+  };
+  const closeModal = event => {
+    setModalState(false);
+  };
+  const showLoader = () => {
+    setLoading(true);
+  }
+  const closeLoader = () => {
+    setLoading(false);
+  }
+
   return (
     <div>
-      <button>send</button>
-      <h1>CustomizePage</h1>
-      <h2>The Color You Picked: {location.hash}</h2>
+      <h1 className="c_page_title">CustomizePage</h1>
 
-      <BackgroundImage colorInfo={elements}></BackgroundImage>
+      <Modal isOpen={modalState}
+             open={openModal}
+             close={closeModal}
+             image={image}>
+      </Modal>
+
+      <BackgroundImage className = "behind_image" colorInfo={elements}></BackgroundImage>
 
       <div id="text-part"> 
         <input id="text-input"
@@ -110,10 +130,21 @@ const CustomizePage = ({location}) => {
           <img src={'http://192.249.18.241:4000/' + userImage} alt=""></img>
         </Draggable>
       <ColorSelector id="text-colorSelector" pallet={picker_data} selectedColor={pickedColor} />
+
+      <Loading
+             isOpen={isLoading}
+             open={showLoader}
+             close={closeLoader}>
+      </Loading>
+      
+      <button className="screenShot-btn"
+        onClick={() => {
+          takeScreenshot().then(showLoader()).then(setTimeout(() => {  openModal() }, 5000)).then(closeLoader)}}>
+        screenshot</button>
       
       </div>
     </div>
   );
 }
-    
+
 export default CustomizePage;

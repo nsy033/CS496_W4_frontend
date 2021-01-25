@@ -4,33 +4,49 @@
   left: 0px;
   width: 40.5%;
   height: 72%;
-  z-index: 3;
 }
 
 #text-input {
   position: absolute;
   top: 0px;
   left: 0px;
-  z-index: 3;
 }
 
 #text-size-input {
   position: absolute;
   top: 0px;
   left: 200px;
-  z-index: 3;
 }
 
 #text-reset-btn {
   position: absolute;
   top: 0px;
   left: 400px;
-  z-index: 3;
 }
 
 #image-input{ 
   position: absolute;
   top: 0px;
   left: 600px;
-  z-index: 3;
 }
+
+
+.behind_image{
+  z-index: 0;
+}
+
+.screenShot-btn{
+  z-index: -1;
+}
+/* 
+.Modal{
+    width: 1300px;
+    margin-left: 10%;
+    margin-top: 2%;
+    padding-left: 5%;
+    padding-top: 1%;
+    z-index: 100;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+  } */

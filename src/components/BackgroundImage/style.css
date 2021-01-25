@@ -12,32 +12,39 @@ html {
   box-sizing: border-box;
 }
 
-#container {
+.container {
   height: 50%;
   width: 50%;
 
 }
 
-#product-svg {
+.product-svg {
   position: relative;
-  z-index: 2;
+  /* z-index: 2; */
+  left: 400px;
+  width: 600px;
+  height: 600px;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-position: 50%;
+  background-position: 100%;
   mix-blend-mode: multiply;
 }
 
-#product-shape {
+.product-shape {
   fill: #DBED64;
 }
 
-#background-image {
+.background-image {
   position: absolute;
-  top: 145px;
-  left: 0px;
-  width: 40.5%;
-  height: 72%;
-  z-index: 1;
+  top: 85px;
+  left: 400px;
+  width: 600px;
+  height: 600px;
+  /* z-index: 1; */
+}
+
+.c_page_title{
+  margin-left: 580px;
 }
 
 .colors {
@@ -45,7 +52,7 @@ html {
   position: fixed;
   bottom: 2em;
   right: 2em;
-  z-index: 3;
+  /* z-index: 3; */
 }
 
 .color {
