@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 
+
 class Login extends Component {
 
     constructor(props) {
@@ -19,7 +20,7 @@ class Login extends Component {
         }
     }
 
-
+    
    
     // Kakao Login
     responseKakao = (res) => {
@@ -88,7 +89,7 @@ class Login extends Component {
         window.sessionStorage.setItem('name', name);
         window.sessionStorage.setItem('provider', provider);
         //this.props.onLogin();
-        // this.props.history.push('/');
+        this.props.history.push('/colorselector');
         alert('로그인성공')
 }
 
@@ -108,11 +109,7 @@ class Login extends Component {
                 />
                 
             </Container>
-            <div>
-                <Link to={`/colorselector/`}>
-                    <button>로그인유지</button>
-                </Link>
-            </div>
+            
             </div>
         );
     }

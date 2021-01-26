@@ -8,6 +8,9 @@ import Test from './components/Test';
 import DesignCapture from './components/DesignCapture';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import BackgroundImage from './components/BackgroundImage';
+import Test from './components/Test'
+import Pendraw from './components/Pendraw'
+
 
 class App extends Component{
   constructor(props){
@@ -65,6 +68,8 @@ class App extends Component{
         <Route path="/customize/:myColor" component={CustomizePage}/>
         <Route path="/colorselector" component={ColorSelector}/>
         <Route path="/test" component={Test}/>
+
+        <Route path="/pendraw" component={Pendraw}/>
         {/* <Route path="/login/" component={Login}/> */}
         
         <Redirect to="/" />

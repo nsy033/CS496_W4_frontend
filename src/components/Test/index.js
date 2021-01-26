@@ -36,10 +36,12 @@ class Test extends Component {
       let cats = [...this.state.cats]
       cats[e.target.dataset.id][e.target.className] = e.target.value.toUpperCase()
       this.setState({ cats }, () => console.log(this.state.cats))
+
     } else {
       this.setState({ [e.target.name]: e.target.value.toUpperCase() })
     }
   }
+
 
   addCat = (e) => {
     this.setState((prevState) => ({
@@ -49,6 +51,7 @@ class Test extends Component {
 
   handleSubmit = (e) => { e.preventDefault() }
   render() {
+
     let {cats} = this.state
     const styles = reactCSS({
         'default': {
@@ -57,6 +60,7 @@ class Test extends Component {
             height: '14px',
             borderRadius: '2px',
             background: `${this.state.hex}`
+
           },
           swatch: {
             padding: '5px',
@@ -79,17 +83,20 @@ class Test extends Component {
           },
         },
       });
+
       
     return (
       <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
         <button onClick={this.addCat}>Text Add</button>
-        
+
         {
           cats.map((val, idx)=> {
             let catId = `cat-${idx}`, ageId = `age-${idx}`, hexId = `hex-${idx}`
             return (
               <div key={idx}>
+
                 <label htmlFor={catId}>{`Text#${idx + 1}`}</label>
+
                 <input
                   type="text"
                   name={catId}
@@ -98,7 +105,9 @@ class Test extends Component {
                   value={cats[idx].name} 
                   className="name"
                 />
+
                 <br/>
+
                 <label htmlFor={ageId}>Text Size</label>
                 <input
                   type="number"
@@ -108,6 +117,7 @@ class Test extends Component {
                   value={cats[idx].age} 
                   className="age"
                 />
+
                 <div>
                   <div style={ styles.swatch } onClick={ this.state.index=idx, this.handleClick } >
                     <div style={ styles.color } />
@@ -132,8 +142,10 @@ class Test extends Component {
             )
           })
         }
+
       </form>
     )
   }
 }
+
 export default Test

@@ -1,3 +1,6 @@
+* {
+  user-select: true;
+}
 body,
 html {
   margin: 0;
@@ -12,14 +15,23 @@ html {
   box-sizing: border-box;
 }
 
+
+.container {
+  height: 50%;
+  width: 50%;
+  user-select: auto;
+}
+
 .product-svg {
   position: relative;
-  /* z-index: 2; */
-  margin-left: 400px;
+  z-index: -1;
+  left: 400px;
+
   width: 600px;
   height: 600px;
   /* background-repeat: no-repeat; */
   mix-blend-mode: multiply;
+  user-select: auto;
 }
 
 .background-image {
@@ -28,6 +40,8 @@ html {
   left: 400px;
   width: 600px;
   height: 600px;
+  user-select: auto;
+  z-index: -1;
   /* z-index: 1; */
 }
 
