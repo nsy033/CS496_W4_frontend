@@ -23,7 +23,7 @@ html {
 }
 
 .product-svg {
-  position: relative;
+  position: absolute;
   z-index: -1;
   left: 400px;
 

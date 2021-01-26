@@ -124,7 +124,7 @@ class Pendraw extends React.Component {
         })
 
         this.ctx = this.refs.canvas.getContext('2d')
-        this.ctx.fillStyle="white"
+        this.ctx.fillStyle="#00000000"
         this.ctx.fillRect(0,0,800,600)
         this.ctx.lineWidth = 10
     }

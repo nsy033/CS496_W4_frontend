@@ -1,15 +1,14 @@
 import React, { Component, useState, useEffect } from 'react';
 import BackgroundImage from '../BackgroundImage';
+import ColorSelector from 'react-color-selector';
 import Draggable from 'react-draggable';
 import axios from 'axios';
 import './style.css';
-import Test from '../Test'
+import Test from '../Test';
+import Pendraw from '../Pendraw';
 import { useScreenshot } from "use-screenshot-hook";
 import DesignCapture from '../DesignCapture';
-import Modal from '../Modal';
-import Loading from '../Loading';
-import Test from '../Test'
-import Pendraw from '../Pendraw';
+
 const CustomizePage = ({location}) => {
 
   const [colorInfo, setColorInfo] = useState({});
@@ -34,19 +33,19 @@ const CustomizePage = ({location}) => {
 
   console.log(location.hash);
   
-  // const [inputText, setInputText] = useState('');
-  //   const onChangeInput = e => {
-  //   setInputText(e.target.value);
-  // };
+  const [inputText, setInputText] = useState('');
+    const onChangeInput = e => {
+    setInputText(e.target.value);
+  };
 
-  // const [inputText1, setInputText1] = useState('');
-  //   const onChangeInput1 = e => {
-  //   setInputText1(e.target.value);
-  // };
+  const [inputText1, setInputText1] = useState('');
+    const onChangeInput1 = e => {
+    setInputText1(e.target.value);
+  };
 
-  // const onReset = () => {
-  //   setInputText("");
-  // };
+  const onReset = () => {
+    setInputText("");
+  };
 
   const [userImage, setUserImage] = useState('');
 
@@ -89,7 +88,7 @@ const CustomizePage = ({location}) => {
     <div>
       <h1 className="c_page_title">CustomizePage</h1>
       <BackgroundImage className = "behind_image" colorInfo={elements}></BackgroundImage>
-     
+      <Pendraw className="back" ></Pendraw>
       <Test></Test>
       <Draggable>
         <h1 style = {{color: `${myColor}`, fontSize:Number(`${inputText1}`)}}>{inputText}</h1>
