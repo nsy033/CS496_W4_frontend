@@ -15,6 +15,7 @@ html {
   box-sizing: border-box;
 }
 
+
 .container {
   height: 50%;
   width: 50%;
@@ -25,17 +26,12 @@ html {
   position: relative;
   z-index: -1;
   left: 400px;
+
   width: 600px;
   height: 600px;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: 100%;
+  /* background-repeat: no-repeat; */
   mix-blend-mode: multiply;
   user-select: auto;
-}
-
-.product-shape {
-  fill: #DBED64;
 }
 
 .background-image {
