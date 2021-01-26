@@ -1,3 +1,6 @@
+* {
+  user-select: true;
+}
 body,
 html {
   margin: 0;
@@ -15,12 +18,12 @@ html {
 .container {
   height: 50%;
   width: 50%;
-
+  user-select: auto;
 }
 
 .product-svg {
   position: relative;
-  /* z-index: 2; */
+  z-index: -1;
   left: 400px;
   width: 600px;
   height: 600px;
@@ -28,6 +31,7 @@ html {
   background-repeat: no-repeat;
   background-position: 100%;
   mix-blend-mode: multiply;
+  user-select: auto;
 }
 
 .product-shape {
@@ -40,6 +44,8 @@ html {
   left: 400px;
   width: 600px;
   height: 600px;
+  user-select: auto;
+  z-index: -1;
   /* z-index: 1; */
 }
 

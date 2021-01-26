@@ -1,12 +1,13 @@
 import React, { Component, useState, useEffect } from 'react';
 import BackgroundImage from '../BackgroundImage';
-import ColorSelector from 'react-color-selector';
 import Draggable from 'react-draggable';
 import axios from 'axios';
 import './style.css';
 import { useScreenshot } from "use-screenshot-hook";
 import Modal from '../Modal';
 import Loading from '../Loading';
+import Test from '../Test'
+import Pendraw from '../Pendraw';
 
 const CustomizePage = ({location}) => {
 
@@ -32,19 +33,19 @@ const CustomizePage = ({location}) => {
 
   console.log(location.hash);
   
-  const [inputText, setInputText] = useState('');
-    const onChangeInput = e => {
-    setInputText(e.target.value);
-  };
+  // const [inputText, setInputText] = useState('');
+  //   const onChangeInput = e => {
+  //   setInputText(e.target.value);
+  // };
 
-  const [inputText1, setInputText1] = useState('');
-    const onChangeInput1 = e => {
-    setInputText1(e.target.value);
-  };
+  // const [inputText1, setInputText1] = useState('');
+  //   const onChangeInput1 = e => {
+  //   setInputText1(e.target.value);
+  // };
 
-  const onReset = () => {
-    setInputText("");
-  };
+  // const onReset = () => {
+  //   setInputText("");
+  // };
 
   const [userImage, setUserImage] = useState('');
 
@@ -103,34 +104,19 @@ const CustomizePage = ({location}) => {
              close={closeModal}
              image={image}>
       </Modal>
-
+      
       <BackgroundImage className = "behind_image" colorInfo={elements}></BackgroundImage>
-
-      <div id="text-part"> 
-        <input id="text-input"
-            type="text"
-            value={inputText}
-            placeholder="입력하세요"
-            onChange={onChangeInput}
-        /> 
-
-        <button id="text-reset-btn" onClick={onReset}>Reset</button>
-        <input id="text-size-input"
-            type="number"
-            value={inputText1}
-            placeholder="글씨 크기"
-            onChange={onChangeInput1}
-        />
+      <Pendraw className="background_iamge" ></Pendraw>
+   
         <input type="file" id="image-input" onChange={uploadHandler}/>
 
-        <Draggable>
-          <h1 style = {{color: `${myColor}`, fontSize:Number(`${inputText1}`)}}>{inputText}</h1>
-        </Draggable>
+       
+        <Test></Test>
+
         <Draggable>
           <img src={'http://192.249.18.241:4000/' + userImage} alt=""></img>
         </Draggable>
-      <ColorSelector id="text-colorSelector" pallet={picker_data} selectedColor={pickedColor} />
-
+      
       <Loading
              isOpen={isLoading}
              open={showLoader}
@@ -142,7 +128,6 @@ const CustomizePage = ({location}) => {
           takeScreenshot().then(showLoader()).then(setTimeout(() => {  openModal() }, 5000)).then(closeLoader)}}>
         screenshot</button>
       
-      </div>
     </div>
   );
 }
