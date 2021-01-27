@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-
+import React from 'react'
 
 const styles = {
     canvas : {
@@ -37,24 +36,8 @@ const styles = {
 //simple draw component made in react
 class Pendraw extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount() {
         this.reset()
-    }
-
-    draw(e) { //response to Draw button click 
-        this.setState({
-            mode:'draw'
-        })
-    }
-
-    erase() { //response to Erase button click
-        this.setState({
-            mode:'erase'
-        })
     }
 
     drawing(e) { //if the pen is down in the canvas, draw/erase
@@ -97,17 +80,6 @@ class Pendraw extends React.Component {
         })
     }
 
-    penSizeUp(){ //increase pen size button clicked
-        this.setState({
-            lineWidth: this.state.lineWidth += 5
-        })
-    }
-
-    penSizeDown() {//decrease pen size button clicked
-        this.setState({
-            lineWidth: this.state.lineWidth -= 5
-        })
-    }
 
     setColor(c){ //a color button was clicked
         this.setState({
@@ -133,18 +105,11 @@ class Pendraw extends React.Component {
         return (
             <div style={styles.maindiv}>
                
-                <canvas ref="canvas" width="800px" height="600px" style={styles.canvas} 
+                <canvas ref="canvas" width="600px" height="600px" 
                     onMouseMove={(e)=>this.drawing(e)} 
                     onMouseDown={(e)=>this.penDown(e)} 
                     onMouseUp={(e)=>this.penUp(e)}>
                 </canvas>
-                <div>
-                    <button onClick={(e)=>this.draw(e)} style={styles.btn, styles.button}>Draw</button>
-                    <button onClick={(e)=>this.erase(e)} style={styles.btn, styles.button}>Erase</button>
-                    <button onClick={(e)=>this.penSizeUp()} style={styles.btn, styles.button}>Pen Size +</button>
-                    <button onClick={(e)=>this.penSizeDown()} style={styles.btn, styles.button}>Pen Size -</button>
-                    <button onClick={()=>this.reset()} style={styles.btn, styles.button}>Reset</button>
-                </div>
                 <div>
                     <button style={Object.assign({}, styles.colorSwatches.red, styles.button)} onClick={()=>this.setColor('red')}>Red</button>
                     <button style={Object.assign({}, styles.colorSwatches.orange, styles.button)} onClick={()=>this.setColor('orange')}>Orange</button>

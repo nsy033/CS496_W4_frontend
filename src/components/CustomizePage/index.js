@@ -1,6 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import BackgroundImage from '../BackgroundImage';
-import ColorSelector from 'react-color-selector';
 import Draggable from 'react-draggable';
 import axios from 'axios';
 import './style.css';
@@ -10,14 +9,17 @@ import { useScreenshot } from "use-screenshot-hook";
 import DesignCapture from '../DesignCapture';
 
 const CustomizePage = ({location}) => {
+  
+  console.log(location.hash);
+  const color_code = location.hash.substring(0,7);
+  const item_num = location.hash.substring(8);
 
   const [colorInfo, setColorInfo] = useState({});
   useEffect(()=>{
       console.log('axios get !');
-      let umounted = false;
       axios.get("http://192.249.18.241:4000/testcrawling/all", {
         params: {
-          myColor: location.hash
+          myColor: color_code
         }
         }).then(
         (res)=>{
@@ -28,10 +30,7 @@ const CustomizePage = ({location}) => {
     .catch(error =>{
       console.log(error)
     })
-    return ()=>{umounted= true}
   },[])
-
-  console.log(location.hash);
   
   const [inputText, setInputText] = useState('');
     const onChangeInput = e => {
@@ -75,7 +74,7 @@ const CustomizePage = ({location}) => {
   }
 
   var elements = [0,0,0,0,0,0], i=0;
-  elements[0] = location.hash;
+  elements[0] = color_code;
   for(i=0; i<colorInfo.length; i++) elements[i+1] = colorInfo[i];
   const { image, takeScreenshot } = useScreenshot();
   let[mode, setMode] = useState(true);
@@ -86,8 +85,8 @@ const CustomizePage = ({location}) => {
   return (
     mode?
     <div>
-      <h1 className="c_page_title">CustomizePage</h1>
-      <BackgroundImage className = "behind_image" colorInfo={elements}></BackgroundImage>
+      <h1 className="c_page_title">{window.sessionStorage.getItem('name')}님의 디자인</h1>
+      <BackgroundImage className = "behind_image" colorInfo={elements} item_id={item_num}></BackgroundImage>
       <Pendraw className="back" ></Pendraw>
       <Test></Test>
       <Draggable>

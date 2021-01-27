@@ -1,14 +1,17 @@
 //import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import ModeSelect from './components/ModeSelect';
+import ProductSelector from './components/ProductSelector';
 import ColorSelector from './components/ColorSelector';
 import CustomizePage from './components/CustomizePage';
 import Login from './components/Login';
 import Test from './components/Test';
 import DesignCapture from './components/DesignCapture';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import BackgroundImage from './components/BackgroundImage';
-import Pendraw from './components/Pendraw'
+import Pendraw from './components/Pendraw';
+import DesignsView from './components/DesignsView';
+import Mypage from './components/MyPage';
 
 
 class App extends Component{
@@ -61,14 +64,18 @@ class App extends Component{
       <BrowserRouter>
 
       <Switch>
+      
         <Route path="/" exact component={Login}/>
+        <Route path="/modeselect" component={ModeSelect}/>
+        <Route path="/productselector" component={ProductSelector}/>
+        <Route path="/colorselector/:item" component={ColorSelector}/>
         <Route path="/customize/" component={CustomizePage}/>
-        <Route path="/backgroundimage" component={BackgroundImage}/>
         <Route path="/customize/:myColor" component={CustomizePage}/>
-        <Route path="/colorselector" component={ColorSelector}/>
+        <Route path="/customize/:myColor/:item" component={CustomizePage}/>
         <Route path="/test" component={Test}/>
-
         <Route path="/pendraw" component={Pendraw}/>
+        <Route path="/mypage" component={Mypage}/>
+        <Route path="/designs" component={DesignsView}/>
         {/* <Route path="/login/" component={Login}/> */}
         
         <Redirect to="/" />

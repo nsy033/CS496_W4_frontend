@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import KakaoLogin from 'react-kakao-login';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
-
 
 class Login extends Component {
 
@@ -14,13 +10,10 @@ class Login extends Component {
             id: '',
             name: '',
             url:'',
-            provider: '',
-            //token:'',
-            
+            email: '',
+            provider: ''
         }
     }
-
-    
    
     // Kakao Login
     responseKakao = (res) => {
@@ -28,51 +21,10 @@ class Login extends Component {
             id: res.profile.id,
             name: res.profile.properties.nickname,
             // token: res.response.access_token,
+            email: res.profile.properties.email,
             url:'',
             provider: 'kakao'
         })
-        // if(res.response.access_token != null){
-        //     axios.get('http://192.249.18.222:4000/auth',
-        //         {
-        //         parmas: {
-        //             Authorization: res.response.access_token,
-        //           //받아오는 response객체의 access_token을 통해 유저 정보를 authorize한다.     
-        //         }
-        //     }
-        //     )
-        //     .then((res)=> {
-        //         console.log(res.response.access_token);
-        //         })
-        // }
-        
-       
-        // fetch(`${this.state.url}/auth`, {
-        //     //백엔드에서 원하는 형태의 endpoint로 입력해서 fetch한다. 
-        //     method: 'GET',
-        //     headers: {
-        //       Authorization: res.response.access_token,
-        //       //받아오는 response객체의 access_token을 통해 유저 정보를 authorize한다. 
-             
-        //     },
-        //   })
-        //     .then((res) => res.json())
-        //     .then((res) => localStorage.setItem('token', res.token), 
-        //           //백엔드에서 요구하는 key 값(token)으로 저장해서 localStorage에 저장한다.
-        //           //여기서 중요한것은 처음에 console.log(res)해서 들어오는 
-        //           //access_token 값을 백엔드에 전달해줘서 백엔드에 저장 해두는 
-        //           //절차가 있으므로 까먹지 말 것!
-
-        //           alert('로그인 성공하였습니다'))
-        //           //alert(this.state.url)
-        //     // .then(axios({
-        //     //     method: 'post',
-        //     //     url: "http://localhost:4000/auth/login",
-        //     //     data: {
-        //     //       firstName: 'Fred',
-        //     //       lastName: 'Flintstone'
-        //     //     }
-        //     //   });
-  
         this.doSignUp();
     }
 
@@ -83,33 +35,29 @@ class Login extends Component {
     }
 
     doSignUp = () => {
-        const { id, name, provider } = this.state;
+        const { id, name, provider, email } = this.state;
 
         window.sessionStorage.setItem('id', id);
         window.sessionStorage.setItem('name', name);
         window.sessionStorage.setItem('provider', provider);
+        window.sessionStorage.setItem('email', email);
         //this.props.onLogin();
-        this.props.history.push('/colorselector');
+        this.props.history.push('/modeselect');
         alert('로그인성공')
-}
+    }
 
     render() {
         return (
             <div>
-                
             <Container>
-              
                 <KakaoButton
-                    jsKey={'977fac8044cec0f3b8c41ec3e3ac3ce6'}
+                    jsKey={'77c070f53ef6ae85556363c4e22dacfe'}
                     buttonText="Kakao"
                     onSuccess={this.responseKakao}
                     onFailure={this.responseFail}
                     getProfile={true}
-                    
                 />
-                
             </Container>
-            
             </div>
         );
     }

@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './style.css';
 
-const ColorPick = ({match}) => {
+const ColorPick = ({location}) => {
  
-
     let [myColor, pickedColor] = useState('');
-
     let picker_data = {
         col: 12,
         row: 12,
@@ -21,6 +19,7 @@ const ColorPick = ({match}) => {
         cellControl: 4
     }
 
+    const item_id = location.pathname.replace("/colorselector/", "");
 
     return (
         <div>
@@ -28,11 +27,10 @@ const ColorPick = ({match}) => {
             <h2>Choose Your Color</h2>
             <ColorSelector pallet={picker_data} selectedColor={pickedColor} />
             <p>{myColor}</p>
-            <Link to={`/customize/${myColor}`}>
+            <Link to={`/customize/${myColor}/${item_id}`}>
                 <button >Go to Next Page</button>
             </Link>
             </div>
-            
         </div>
         
     );

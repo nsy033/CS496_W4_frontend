@@ -1,8 +1,8 @@
 import Draggable from 'react-draggable';
-import React, { Component} from "react"
-import { ChromePicker } from 'react-color'
-import reactCSS from 'reactcss'
-import { SketchPicker } from 'react-color'
+import React, { Component} from "react";
+import reactCSS from 'reactcss';
+import { SketchPicker } from 'react-color';
+
 class Test extends Component {
   state = {
     cats: [{name:"", age:"", hex:"", displayColorPicker:false}],

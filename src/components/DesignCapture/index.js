@@ -10,7 +10,8 @@ class DesignCapture extends Component {
     screenCapture: "",
     open: false,
     title: "",
-    price: ""
+    price: "",
+    checked: false
   };
 
   handleScreenCapture = screenCapture => {
@@ -37,6 +38,10 @@ class DesignCapture extends Component {
       [e.target.name]: e.target.value
     });
   };
+
+  checkboxHandler =(e)=>{
+    this.setState({ checked: !this.state.checked });
+  }
 
   convertBase64ToFile = (image) => {
     const byteString = atob(image.split(',')[1]);
@@ -70,7 +75,9 @@ class DesignCapture extends Component {
       sendState = {
         screenCapture: response.data,
         title: this.state.title,
-        price: this.state.price
+        price: this.state.price,
+        private: this.state.checked,
+        user_name: window.sessionStorage.getItem('name')
       }
 
       debugger;
@@ -121,6 +128,13 @@ class DesignCapture extends Component {
                       onChange={this.handleOnChange}
                       name="price"
                       value={this.state.price}
+                    />
+                  </div><div>
+                    <label>Private Repository</label>
+                    <input
+                      type="checkbox"
+                      checked= {this.state.checked === true}
+                      onChange={this.checkboxHandler}
                     />
                   </div>
                   <div className="image__container">
