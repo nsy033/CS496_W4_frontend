@@ -2,10 +2,12 @@ import Draggable from 'react-draggable';
 import React, { Component} from "react";
 import reactCSS from 'reactcss';
 import { SketchPicker } from 'react-color';
+import FontPicker from 'font-picker-react';
 
 class Test extends Component {
   state = {
     cats: [{name:"", age:"", hex:"", displayColorPicker:false}],
+    activeFontFamily:'Open Sans',
     index: 0
   }
 
@@ -86,6 +88,17 @@ class Test extends Component {
 
       
     return (
+      <div>
+        <FontPicker
+          apiKey="AIzaSyCOLWBR5Ez1VrFwGteiS_pLh_DVeA5uEV8"
+          activeFontFamily={this.state.activeFontFamily}
+          onChange={(nextFont) =>
+            this.setState({
+              activeFontFamily: nextFont.family,
+            })
+          }
+        />
+
       <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
         <button onClick={this.addCat}>Text Add</button>
 
@@ -135,8 +148,8 @@ class Test extends Component {
                       : null }
                   </div>
                   <Draggable>
-                    <h1 style={{color: `${this.state.cats[idx].hex}`, fontSize:Number(`${cats[idx].age}`)}}
-                    >{cats[idx].name}</h1>
+                    <p style={{fontFamily: `${this.state.activeFontFamily}` ,color: `${this.state.cats[idx].hex}`, fontSize:Number(`${cats[idx].age}`)}}
+                    >{cats[idx].name}</p>
                   </Draggable>
                 </div>
             )
@@ -144,6 +157,7 @@ class Test extends Component {
         }
 
       </form>
+      </div>
     )
   }
 }
