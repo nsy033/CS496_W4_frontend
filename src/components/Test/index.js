@@ -10,6 +10,7 @@ class Test extends Component {
     activeFontFamily:'Open Sans',
     index: 0
   }
+  
 
   handleClick = () => {
     let new_cats = [...this.state.cats]
@@ -89,6 +90,7 @@ class Test extends Component {
       
     return (
       <div>
+        <p>{this.state.index}</p>
         <FontPicker
           apiKey="AIzaSyCOLWBR5Ez1VrFwGteiS_pLh_DVeA5uEV8"
           activeFontFamily={this.state.activeFontFamily}

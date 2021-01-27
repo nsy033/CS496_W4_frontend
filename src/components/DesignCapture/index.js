@@ -70,18 +70,20 @@ class DesignCapture extends Component {
     const data = new FormData();
     data.append('file', imageFile);
     debugger;
-    axios.post('http://192.249.18.241:4000/uploads', data)
+    axios.post('http://192.249.18.222:4000/uploads', data)
     .then(response=>{
       sendState = {
         screenCapture: response.data,
         title: this.state.title,
         price: this.state.price,
         private: this.state.checked,
-        user_name: window.sessionStorage.getItem('name')
+        user_name: window.sessionStorage.getItem('name'),
+        user_email:window.sessionStorage.getItem('email'),
+        like:0,
       }
 
       debugger;
-      axios.post('http://192.249.18.241:4000/design/add', sendState)
+      axios.post('http://192.249.18.222:4000/design/add', sendState)
       .then(response=>{console.log(response)})
       .catch(error =>{
         console.log(error)

@@ -17,7 +17,7 @@ const CustomizePage = ({location}) => {
   const [colorInfo, setColorInfo] = useState({});
   useEffect(()=>{
       console.log('axios get !');
-      axios.get("http://192.249.18.241:4000/testcrawling/all", {
+      axios.get("http://192.249.18.222:4000/testcrawling/all", {
         params: {
           myColor: color_code
         }
@@ -32,26 +32,13 @@ const CustomizePage = ({location}) => {
     })
   },[])
   
-  const [inputText, setInputText] = useState('');
-    const onChangeInput = e => {
-    setInputText(e.target.value);
-  };
-
-  const [inputText1, setInputText1] = useState('');
-    const onChangeInput1 = e => {
-    setInputText1(e.target.value);
-  };
-
-  const onReset = () => {
-    setInputText("");
-  };
 
   const [userImage, setUserImage] = useState('');
 
   const uploadHandler = (event) => {
     const data = new FormData();
     data.append('file', event.target.files[0]);
-    axios.post('http://192.249.18.241:4000/uploads', data)
+    axios.post('http://192.249.18.222:4000/uploads', data)
     .then(response=>{
       console.log('get path from server: ' + response.data);
       setUserImage(response.data);
@@ -89,11 +76,9 @@ const CustomizePage = ({location}) => {
       <BackgroundImage className = "behind_image" colorInfo={elements} item_id={item_num}></BackgroundImage>
       <Pendraw className="back" ></Pendraw>
       <Test></Test>
+      
       <Draggable>
-        <h1 style = {{color: `${myColor}`, fontSize:Number(`${inputText1}`)}}>{inputText}</h1>
-      </Draggable>
-      <Draggable>
-        <img src={'http://192.249.18.241:4000/' + userImage} alt=""></img>
+        <img src={'http://192.249.18.222:4000/' + userImage} alt=""></img>
       </Draggable>
       
       <input type="file" id="image-input" onChange={uploadHandler}/>

@@ -22,7 +22,7 @@ function DesignsView (props) {
     useEffect(()=>{
         // axios.get("http://192.249.18.241:4000/design/all").then(
             console.log(window.sessionStorage.getItem('name'));
-        axios.get("http://192.249.18.241:4000/design/mypage/"+String(window.sessionStorage.getItem('name'))).then(
+        axios.get("http://192.249.18.222:4000/design/mypage/"+String(window.sessionStorage.getItem('name'))).then(
             (res)=>{
                 setDesignInfo(res.data);
                 console.log(res.data);

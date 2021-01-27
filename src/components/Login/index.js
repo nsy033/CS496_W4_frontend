@@ -20,9 +20,7 @@ class Login extends Component {
         this.setState({
             id: res.profile.id,
             name: res.profile.properties.nickname,
-            // token: res.response.access_token,
-            email: res.profile.properties.email,
-            url:'',
+            email: res.profile.kakao_account.email,
             provider: 'kakao'
         })
         this.doSignUp();
@@ -44,6 +42,7 @@ class Login extends Component {
         //this.props.onLogin();
         this.props.history.push('/modeselect');
         alert('로그인성공')
+        
     }
 
     render() {
