@@ -52,6 +52,7 @@ function DesignsView (props) {
         );
     },[]);
 
+    document.body.style = 'background: #ffffff';
     return (
         <div>
             <div>My designs</div>
@@ -67,9 +68,7 @@ function DesignsView (props) {
                 </Grid>
             </div>
 
-            
             <div>Liked</div>
-
             <div>
                 <Grid container spacing={2}>
                 {likedInfo.map((val, idx) =>(

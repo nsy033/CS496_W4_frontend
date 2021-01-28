@@ -56,6 +56,8 @@ function DesignsView (props) {
             console.log(error);
         });
     },[]);
+    
+    document.body.style = 'background: #ffffff';
     return (
         <div>
             <div>DesignsView</div>

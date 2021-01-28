@@ -5,10 +5,12 @@ import Grid from '@material-ui/core/Grid';
 import Header from '../Header';
 
 const ProductSelector = ({match}) => {
+    document.body.style = 'background: #cfd6df';
     return (
-            <div>
+            <div className="back">
+            <Header  classname='header' />
             {/* <h2>Choose Item</h2> */}
-            <Grid  style={{marginLeft: 10, marginTop:150}} container spacing={2}>
+            <Grid  style={{marginLeft: 90, marginTop:230}} container spacing={2}>
             <div style={{margin:10}}>
                 <Link to={`/colorselector/${0}`}>
                     <img 

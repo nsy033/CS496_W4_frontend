@@ -14,13 +14,13 @@ const Intro = (props)=>{
             <div className="fade-container">
                 <Fade >
                     <div className="each-fade">
-                        <img src={image3} width= '1300'></img>
+                        <img src={image3} width= '1100'></img>
                     </div>
                     <div className="each-fade">
-                        <img src={image2} width= '1300'></img>
+                        <img src={image2} width= '1100'></img>
                     </div>
                     <div className="each-fade">
-                        <img src={image1} width= '1300'></img>
+                        <img src={image1} width= '1100'></img>
                     </div>
                 </Fade>
             </div>
