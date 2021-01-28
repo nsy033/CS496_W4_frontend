@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import KakaoLogin from 'react-kakao-login';
 import styled from 'styled-components';
+import axios from 'axios';
 
 class Login extends Component {
 
@@ -21,7 +22,7 @@ class Login extends Component {
             id: res.profile.id,
             name: res.profile.properties.nickname,
             // token: res.response.access_token,
-            email: res.profile.properties.email,
+            email: res.profile.kakao_account.email,
             url:'',
             provider: 'kakao'
         })
@@ -42,7 +43,33 @@ class Login extends Component {
         window.sessionStorage.setItem('provider', provider);
         window.sessionStorage.setItem('email', email);
         //this.props.onLogin();
-        this.props.history.push('/modeselect');
+
+        axios.get("http://192.249.18.241:4000/user/login/"+String(email)).then(
+            (res)=>{
+                console.log(res.data);
+                if(res.data.exist === false) {
+                    const sendState = {
+                        exist: true,
+                        email: email,
+                        liked: []
+                    }
+
+                    debugger;
+                    axios.post('http://192.249.18.241:4000/user/add', sendState)
+                    .then(response=>{console.log(response)})
+                    .catch(error =>{
+                        console.log(error)
+                    })
+                }
+                debugger;
+            }
+        )
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        // document.location.href = "/modeselect";
+        // this.props.history.push('/modeselect');
         alert('로그인성공')
     }
 

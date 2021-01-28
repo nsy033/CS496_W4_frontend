@@ -1,0 +1,14 @@
+
+.fade-container{
+    width: auto;
+}
+.images{
+    text-align: center;
+}
+
+.empty{
+    color: white;
+    margin-bottom: 53px;
+    padding: 0;
+    font-size: 0px;
+}

@@ -2,6 +2,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import MainPage from './components/MainPage';
 import ModeSelect from './components/ModeSelect';
 import ProductSelector from './components/ProductSelector';
 import ColorSelector from './components/ColorSelector';
@@ -65,7 +66,7 @@ class App extends Component{
 
       <Switch>
       
-        <Route path="/" exact component={Login}/>
+        <Route path="/" exact component={MainPage}/>
         <Route path="/modeselect" component={ModeSelect}/>
         <Route path="/productselector" component={ProductSelector}/>
         <Route path="/colorselector/:item" component={ColorSelector}/>

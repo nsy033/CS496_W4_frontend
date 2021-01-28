@@ -19,19 +19,37 @@ const styles = theme => ({
 
 function DesignsView (props) {
     const [designInfo, setDesignInfo] = useState([]);
-    useEffect(()=>{
+    const [likedInfo, setLikedInfo] = useState([]);
+
+    useEffect( async()=>{
         // axios.get("http://192.249.18.241:4000/design/all").then(
             console.log(window.sessionStorage.getItem('name'));
-        axios.get("http://192.249.18.241:4000/design/mypage/"+String(window.sessionStorage.getItem('name'))).then(
-            (res)=>{
+            await axios.get("http://192.249.18.241:4000/design/mypage/"+String(window.sessionStorage.getItem('name'))).then(
+            (res)=> {
+                // designInfo=res.data;
                 setDesignInfo(res.data);
                 console.log(res.data);
-                console.log(designInfo);
+                console.log('design ',designInfo);
+                // debugger;
             }
         )
         .catch(function (error) {
             console.log(error);
-        });
+        })
+        .then(
+            axios.get("http://192.249.18.241:4000/user/check/"+String(window.sessionStorage.getItem('email'))).then(
+            (res)=>{
+                setLikedInfo(res.data.liked);
+                // likedInfo=res.data;
+                console.log(res.data.liked);
+                console.log('liked ', likedInfo);
+                // debugger;
+                }
+            )
+            .catch(function (error) {
+                console.log(error);
+            })
+        );
     },[]);
 
     return (
@@ -48,7 +66,21 @@ function DesignsView (props) {
                 ))}
                 </Grid>
             </div>
+
+            
+            <div>Liked</div>
+
+            <div>
+                <Grid container spacing={2}>
+                {likedInfo.map((val, idx) =>(
+                    <Grid item xs={2}>
+                        <Design design={likedInfo[idx]} />
+                    </Grid>
+                ))}
+                </Grid>
+            </div>
         </div>
     );
 }
+
 export default withStyles(styles)(DesignsView);
