@@ -25,10 +25,10 @@ html {
 .product-svg {
   position: absolute;
   z-index: -1;
-  left: 400px;
-
-  width: 600px;
-  height: 600px;
+  left: 650px;
+  margin-top: 85px;
+  width: 580px;
+  height: 580px;
   /* background-repeat: no-repeat; */
   mix-blend-mode: multiply;
   user-select: auto;
@@ -37,12 +37,11 @@ html {
 .background-image {
   position: absolute;
   top: 85px;
-  left: 400px;
-  width: 600px;
-  height: 600px;
+  left: 650px;
+  width: 580px;
+  height: 580px;
   user-select: auto;
   z-index: -1;
-  /* z-index: 1; */
 }
 
 .c_page_title{

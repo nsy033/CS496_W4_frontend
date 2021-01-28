@@ -5,3 +5,41 @@
     text-align: center;  
     background: #e5e5e5;  
   }
+
+  
+.example_image{
+  position: absolute;
+  top: 85px;
+  left: 650px;
+  width: 580px;
+  height: 580px;
+  user-select: auto;
+  z-index: -1;
+}
+
+.example_product-svg{
+  position: absolute;
+  z-index: -1;
+  left: 650px;
+  margin-top: 85px;
+  width: 580px;
+  height: 580px;
+  /* background-repeat: no-repeat; */
+  mix-blend-mode: multiply;
+  user-select: auto;
+}
+#colorselector_picker{
+  padding-top: 190px;
+  padding-left: 260px;
+}
+
+.color_banner{
+  margin-left: 360px;
+  margin-top: 96px;
+}
+.next_icon{
+  position: absolute;
+  margin-left: 1280px;
+  margin-top: -230px;
+  z-index: 100;
+}

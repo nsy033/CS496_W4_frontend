@@ -14,14 +14,14 @@
 }
 
 .headerMenu{
-    margin-left: 800px;
+    margin-left: 950px;
     position: fixed;
     z-index: 50;
     padding: 0;
 }
 .headerMenu a{
     display: inline-block;
-    margin: 8px 7px;
+    margin: 9px 8px;
     text-decoration: none;
     color: #8e8992;
     font-size: 15px;
@@ -39,4 +39,8 @@
     text-align: center;
     z-index: 50;
     padding: 0;
+}
+.logo {
+    margin-left: 60px;
+    margin-top: 5px;
 }

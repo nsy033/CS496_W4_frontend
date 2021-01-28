@@ -11,7 +11,7 @@ class Mainpage extends Component {
     document.body.style = 'background: #ffffff';
       return (
           <div  className="all">
-            <Header changeState={this.props.changeState} classname='header' />
+            <Header  classname='header' />
             <Intro/>
             <img className="banner" src='./images/banner.png' height='80'/>
           </div>

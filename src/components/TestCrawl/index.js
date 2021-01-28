@@ -5,7 +5,7 @@ const TestCrawl = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {
-      const datas = await axios.get("http://192.249.18.222:4000/testcrawling/all");
+      const datas = await axios.get("http://192.249.18.241:4000/testcrawling/all");
       setData(datas.data);
     };
     getData();

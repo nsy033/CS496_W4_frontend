@@ -5,11 +5,16 @@ import axios from 'axios';
 import './style.css';
 import Test from '../Test';
 import Pendraw from '../Pendraw';
+import Header from '../Header';
 import { useScreenshot } from "use-screenshot-hook";
 import DesignCapture from '../DesignCapture';
+import next_path from './next.png';
+import banner_path from './banner.png';
+import goback_path from './goback.png';
 
 const CustomizePage = ({location}) => {
   
+  document.body.style = 'background: #ffffff';
   console.log(location.hash);
   const color_code = location.hash.substring(0,7);
   const item_num = location.hash.substring(8);
@@ -83,28 +88,37 @@ const CustomizePage = ({location}) => {
     },[image])
 
   return (
-    mode?
     <div>
-      <h1 className="c_page_title">{window.sessionStorage.getItem('name')}님의 디자인</h1>
-      <BackgroundImage className = "behind_image" colorInfo={elements} item_id={item_num}></BackgroundImage>
-      <Pendraw className="back" ></Pendraw>
-      <Test></Test>
-      <Draggable>
-        <h1 style = {{color: `${myColor}`, fontSize:Number(`${inputText1}`)}}>{inputText}</h1>
-      </Draggable>
-      <Draggable>
-        <img src={'http://192.249.18.241:4000/' + userImage} alt=""></img>
-      </Draggable>
-      
+      <Header style={{zIndex: 500}}/>
+      {mode?
+      <div>
+      {window.sessionStorage.getItem('id') != null?
+        <img className="next_btn" src={next_path} height='40' onClick={() => takeScreenshot()}/>
+         : null
+      }
+      {/* <img className="custom_banner" src={banner_path} height='80'/> */}
       <input type="file" id="image-input" onChange={uploadHandler}/>
-
-      <button onClick={() => takeScreenshot()}>screenshot</button>
-    </div>
-    :
-    <div>
-      <img src={image}/>
-      <DesignCapture />
-      <button onClick={() => setMode(true)}>go back</button>
+      <div>
+        {/* <h1 className="c_page_title">{window.sessionStorage.getItem('name')}님의 디자인</h1> */}
+        <BackgroundImage className = "behind_image" colorInfo={elements} item_id={item_num}></BackgroundImage>
+        <Pendraw className="back"  ></Pendraw>
+        <Draggable >
+          <img src={'http://192.249.18.241:4000/' + userImage} alt="" height='70px' ></img>
+        </Draggable>
+        <Test className='test_text'></Test>
+        <Draggable>
+          <h1 style = {{color: `${myColor}`, fontSize:Number(`${inputText1}`)}}>{inputText}</h1>
+        </Draggable>
+        
+      </div>
+    
+      </div>
+      :
+      <div>
+        <img className="prev_btn" src={goback_path} height='40' onClick={() => setMode(true)}/>
+        <DesignCapture imgsrc={image}/>
+        {/* <button onClick={() => setMode(true)}>go back</button> */}
+      </div>}
     </div>
   );
 }

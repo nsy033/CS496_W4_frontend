@@ -73,6 +73,7 @@ class App extends Component{
         <Route path="/customize/" component={CustomizePage}/>
         <Route path="/customize/:myColor" component={CustomizePage}/>
         <Route path="/customize/:myColor/:item" component={CustomizePage}/>
+        <Route path="/customize/:item" component={CustomizePage}/>
         <Route path="/test" component={Test}/>
         <Route path="/pendraw" component={Pendraw}/>
         <Route path="/mypage" component={Mypage}/>

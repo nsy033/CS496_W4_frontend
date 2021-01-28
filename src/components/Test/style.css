@@ -21,3 +21,17 @@
     background-color: #999999;
     float: left;
   }
+
+  .addtext {
+    position:absolute;
+    margin-left: 470px;
+    margin-top: -42px;
+    width: 90px;
+  }
+  
+  .hex{
+    position: absolute;
+    margin-left: 260px;
+    margin-top: -23px;
+    z-index: 0;
+  }

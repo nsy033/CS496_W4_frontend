@@ -20,15 +20,19 @@ class Header extends Component {
         return(
             <Wrapper className="header">
             <div>
-                {/* <img className = 'logo' src = "/images/logo.png" height='40px'></img> */}
                 <div className="headerMenu">
-                        <a><Link to={`/`}>MAIN</Link></a>
-                        <a><Link to={`/productselector`}>CUSTOMIZE</Link></a>
-                        <a><Link to={`/designs`}>BOARD</Link></a>
-                        <a><Link to={`/mypage`}>MYPAGE</Link></a>
-                        {/* <a><Link to={`/designs`}>LOGIN</Link></a> */}
-                        {/* <a><Login/></a> */}
+                
+                    {window.sessionStorage.getItem('id') == null?
+                        <a><Login/></a>
+                        : null
+                    }
+                    <a><Link to={`/`}>MAIN</Link></a>
+                    <a><Link to={`/productselector`}>CUSTOMIZE</Link></a>
+                    <a><Link to={`/designs`}>BOARD</Link></a>
+                    <a><Link to={`/mypage`}>MYPAGE</Link></a>
                 </div>
+                
+                <img className = 'logo' src = "/images/logo.png" height='38px'></img>
             </div>
 
             </Wrapper>

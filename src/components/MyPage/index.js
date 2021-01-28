@@ -3,6 +3,10 @@ import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Design from '../Design';
+import mydesigns from './mydesigns.png';
+import liked from './liked.png';
+import Header from '../Header';
+import logout_btn from './logout.png';
 import './style.css';
 
 const styles = theme => ({
@@ -20,6 +24,11 @@ const styles = theme => ({
 function DesignsView (props) {
     const [designInfo, setDesignInfo] = useState([]);
     const [likedInfo, setLikedInfo] = useState([]);
+
+    const logout = event => {
+       window.sessionStorage.clear();
+       window.location.href='/';
+    };
 
     useEffect( async()=>{
         // axios.get("http://192.249.18.241:4000/design/all").then(
@@ -55,29 +64,38 @@ function DesignsView (props) {
     document.body.style = 'background: #ffffff';
     return (
         <div>
-            <div>My designs</div>
-
+            <Header style={{zIndex: 50}}/>
+            <div style={{marginLeft:'50px', paddingTop:'50px'}} > <img src={mydesigns} height='80px' /> </div>
             <div>
-                <Grid container spacing={2}>
-                {designInfo.map((val, idx) =>(
-                    <Grid item xs={2}>
-                        <Design design={designInfo[idx]} />
-                        {/* <img src={'http://192.249.18.241:4000/' + designInfo[idx].screenCapture} height='200px'/> */}
+                <div  style={{marginLeft:'50px', paddingBottom:'5px'}}>
+                    <Grid container spacing={0.5}>
+                    {designInfo.map((val, idx) =>(
+                        <Grid item xs={3}>
+                            <Design design={designInfo[idx]} />
+                            {/* <img src={'http://192.249.18.241:4000/' + designInfo[idx].screenCapture} height='200px'/> */}
+                        </Grid>
+                    ))}
                     </Grid>
-                ))}
-                </Grid>
+                </div>
             </div>
 
-            <div>Liked</div>
+            <div style={{marginLeft:'50px', paddingTop:'10px'}} > <img src={liked} height='80px' /> </div>
             <div>
-                <Grid container spacing={2}>
-                {likedInfo.map((val, idx) =>(
-                    <Grid item xs={2}>
-                        <Design design={likedInfo[idx]} />
+                <div  style={{marginLeft:'50px', paddingBottom:'50px'}}>
+                    <Grid container spacing={0.5}>
+                    {likedInfo.map((val, idx) =>(
+                        <Grid item xs={3}>
+                            <Design design={likedInfo[idx]} />
+                            {/* <img src={'http://192.249.18.241:4000/' + designInfo[idx].screenCapture} height='200px'/> */}
+                        </Grid>
+                    ))}
                     </Grid>
-                ))}
-                </Grid>
+                </div>
             </div>
+            {window.sessionStorage.getItem('id') != null?
+                <img className="logout_btn" src={logout_btn} onClick={logout} height='75px'/>
+                    : null
+            }
         </div>
     );
 }

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.draw_text{
+    text-align: center;
+    font-size: 15px;
+    color:rgb(255, 255, 255);
+    font-family: 'Nanum Gothic';
+    /* font-weight: bold; */
+}
+
+.buttons{
+    margin-top: -500px;
+    margin-left: -400px;
+}

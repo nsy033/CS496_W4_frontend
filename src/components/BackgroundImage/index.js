@@ -6,7 +6,7 @@ import phone_path from './phone.png';
 import socks_path from './socks.png';
 import Pendraw from "../Pendraw";
 
-class BackgroundImage_mtm extends Component {
+class BackgroundImage extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -69,4 +69,4 @@ class BackgroundImage_mtm extends Component {
     }
 }
     
-export default BackgroundImage_mtm;
+export default BackgroundImage;

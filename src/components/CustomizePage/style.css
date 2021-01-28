@@ -26,8 +26,8 @@
 
 #image-input{ 
   position: absolute;
-  top: 800px;
-  left: 600px;
+  top: 230px;
+  left: 300px;
 }
 
 
@@ -38,19 +38,27 @@
 .screenShot-btn{
   z-index: -1;
 }
-/* 
-.Modal{
-    width: 1300px;
-    margin-left: 10%;
-    margin-top: 2%;
-    padding-left: 5%;
-    padding-top: 1%;
-    z-index: 100;
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
-  } */
 
-  .back{
-    position: absolute;
-  }
+.back{
+  position: absolute;
+}
+
+.next_btn{
+  position: absolute;
+  margin-left: 1280px;
+  margin-top: 350px;
+  z-index: 100;
+}
+.prev_btn{
+  position: absolute;
+  margin-left: 80px;
+  margin-top: 350px;
+  z-index: 10;
+}
+
+.custom_banner{
+  position: absolute;
+  margin-left: 360px;
+  margin-top: 676px;
+  z-index: -50;
+}

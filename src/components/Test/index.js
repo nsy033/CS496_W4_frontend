@@ -3,6 +3,8 @@ import React, { Component} from "react";
 import reactCSS from 'reactcss';
 import { SketchPicker } from 'react-color';
 import FontPicker from 'font-picker-react';
+import textAdd from './addtext.png';
+import './style.css';
 
 class Test extends Component {
   state = {
@@ -44,7 +46,6 @@ class Test extends Component {
     }
   }
 
-
   addCat = (e) => {
     this.setState((prevState) => ({
       cats: [...prevState.cats, {name:"", age:"", hex:"", displayColorPicker:false}],
@@ -60,12 +61,16 @@ class Test extends Component {
           color: {
             width: '36px',
             height: '14px',
+            width: '14px',
             borderRadius: '2px',
-            background: `${this.state.hex}`
+            background: `${this.state.cats[this.state.index].hex}`
 
           },
           swatch: {
-            padding: '5px',
+            margin: '5px',
+            padding: '8px',
+            height: '14px',
+            width: '14px',
             background: '#fff',
             borderRadius: '1px',
             boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
@@ -74,7 +79,7 @@ class Test extends Component {
           },
           popover: {
             position: 'absolute',
-            zIndex: '2',
+            zIndex: '2'
           },
           cover: {
             position: 'fixed',
@@ -89,69 +94,77 @@ class Test extends Component {
       
     return (
       <div>
-        <FontPicker
-          apiKey="AIzaSyCOLWBR5Ez1VrFwGteiS_pLh_DVeA5uEV8"
-          activeFontFamily={this.state.activeFontFamily}
-          onChange={(nextFont) =>
-            this.setState({
-              activeFontFamily: nextFont.family,
-            })
-          }
-        />
+        <div style={{marginLeft: '260px', marginTop: '20px'}}>
+          <FontPicker
+            apiKey="AIzaSyCOLWBR5Ez1VrFwGteiS_pLh_DVeA5uEV8"
+            activeFontFamily={this.state.activeFontFamily}
+            onChange={(nextFont) =>
+              this.setState({
+                activeFontFamily: nextFont.family,
+              })
+            }
+          />
+        </div>
 
+          
       <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
-        <button onClick={this.addCat}>Text Add</button>
+          <img className="addtext" src={textAdd} onClick={this.addCat}/>
+
+        {/* <button onClick={this.addCat}>Text Add</button> */}
 
         {
           cats.map((val, idx)=> {
             let catId = `cat-${idx}`, ageId = `age-${idx}`, hexId = `hex-${idx}`
             return (
               <div key={idx}>
-
-                <label htmlFor={catId}>{`Text#${idx + 1}`}</label>
-
-                <input
-                  type="text"
-                  name={catId}
-                  data-id={idx}
-                  id={catId}
-                  value={cats[idx].name} 
-                  className="name"
-                />
-
-                <br/>
-
-                <label htmlFor={ageId}>Text Size</label>
-                <input
-                  type="number"
-                  name={ageId}
-                  data-id={idx}
-                  id={ageId}
-                  value={cats[idx].age} 
-                  className="age"
-                />
-
-                <div>
-                  <div style={ styles.swatch } onClick={ this.state.index=idx, this.handleClick } >
-                    <div style={ styles.color } />
-                    </div>
-                    { this.state.cats[idx].displayColorPicker ? 
-                      <div style={ styles.popover }>
-                        <div style={ styles.cover } onClick={ this.handleClose }/>
-                        <SketchPicker color={ cats[idx].hex } onChange={ this.state.index=idx, this.handleChange1 }
-                          name={hexId} 
-                          data-id={idx}
-                          id={hexId}
-                          value={cats[idx].hex}
-                          className="hex"  />
-                      </div>
-                      : null }
-                  </div>
-                  <Draggable>
-                    <p style={{fontFamily: `${this.state.activeFontFamily}` ,color: `${this.state.cats[idx].hex}`, fontSize:Number(`${cats[idx].age}`)}}
-                    >{cats[idx].name}</p>
-                  </Draggable>
+              <div style={{marginLeft: '260px', marginTop: '12px'}}>
+                <div >
+                  <label className="label_text" htmlFor={catId}>{`Text #${idx + 1}`}</label>
+                  <br/>
+                  <label className="label_text" htmlFor={ageId}>Font Size</label>
                 </div>
+                
+                <div style={{marginLeft: '78px', marginTop: '-42px'}}>
+                  <input
+                    type="text"
+                    name={catId}
+                    data-id={idx}
+                    id={catId}
+                    value={cats[idx].name} 
+                    className="name"
+                  />
+                    <br/>
+                  <input
+                    type="number"
+                    name={ageId}
+                    data-id={idx}
+                    id={ageId}
+                    value={cats[idx].age} 
+                    className="age"
+                  />
+                </div>
+                
+            <div className="hex">
+              <div style={ styles.swatch } onClick={ this.state.index=idx, this.handleClick } >
+                {/* <div style={ styles.color } /> */}
+                </div>
+                { this.state.cats[idx].displayColorPicker ? 
+                  <div style={ styles.popover }>
+                    <div style={ styles.cover } onClick={ this.handleClose }/>
+                    <SketchPicker color={ cats[idx].hex } onChange={ this.state.index=idx, this.handleChange1 }
+                      name={hexId} 
+                      data-id={idx}
+                      id={hexId}
+                      value={cats[idx].hex}/>
+                  </div>
+                  : null }
+              </div>
+              <Draggable>
+                <p style={{fontFamily: `${this.state.activeFontFamily}` ,color: `${this.state.cats[idx].hex}`, fontSize:Number(`${cats[idx].age}`)}}
+                >{cats[idx].name}</p>
+              </Draggable>
+            </div>
+            </div>
             )
           })
         }

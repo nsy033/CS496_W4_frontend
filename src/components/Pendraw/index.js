@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
+import './style.css';
 
 const styles = {
     canvas : {
-        
         border:'1px solid #333',
         margin:'20px 0px',
         zIndex:1
@@ -12,23 +12,25 @@ const styles = {
         padding:'10px',
         margin:'auto',
         width:'800px',
-    
+        marginTop:'auto',
+        marginBottom:'auto',
+        marginLeft:'650px'
     },
 
     button : {
         border:'0px',
-        margin:'1px',
-        height:'50px',
-        minWidth:'75px'
+        margin:'2px',
+        height:'40px',
+        minWidth:'40px',
     },
 
     colorSwatches : {        
-        red : {'backgroundColor' : 'red'},    
-        orange : {'backgroundColor' : 'orange'},
-        yellow : {'backgroundColor' : 'yellow'},
-        green : {'backgroundColor' : 'green'},
-        blue : {'backgroundColor' : 'blue'},
-        purple : {'backgroundColor' : 'purple'},
+        red : {'backgroundColor' : '#cb1313'},    
+        orange : {'backgroundColor' : '#f67d11'},
+        yellow : {'backgroundColor' : '#ffcc00'},
+        green : {'backgroundColor' : '#30b229'},
+        blue : {'backgroundColor' : '#0d64e7'},
+        purple : {'backgroundColor' : '#8916c5'},
         black : {'backgroundColor' : 'black'}
     }
 }
@@ -105,19 +107,19 @@ class Pendraw extends React.Component {
         return (
             <div style={styles.maindiv}>
                
-                <canvas ref="canvas" width="600px" height="600px" 
+                <canvas ref="canvas" width="600px" height="600px" style={{marginTop:'60px'}}
                     onMouseMove={(e)=>this.drawing(e)} 
                     onMouseDown={(e)=>this.penDown(e)} 
                     onMouseUp={(e)=>this.penUp(e)}>
                 </canvas>
-                <div>
-                    <button style={Object.assign({}, styles.colorSwatches.red, styles.button)} onClick={()=>this.setColor('red')}>Red</button>
-                    <button style={Object.assign({}, styles.colorSwatches.orange, styles.button)} onClick={()=>this.setColor('orange')}>Orange</button>
-                    <button style={Object.assign({}, styles.colorSwatches.yellow, styles.button)} onClick={()=>this.setColor('yellow')}>Yellow</button>
-                    <button style={Object.assign({}, styles.colorSwatches.green, styles.button)} onClick={()=>this.setColor('green')}>Green</button>
-                    <button style={Object.assign({}, styles.colorSwatches.blue, styles.button)} onClick={()=>this.setColor('blue')}>Blue</button>
-                    <button style={Object.assign({}, styles.colorSwatches.purple, styles.button)} onClick={()=>this.setColor('purple')}>Purple</button>
-                    <button style={Object.assign({}, styles.colorSwatches.black, styles.button)} onClick={()=>this.setColor('black')}>Black</button>
+                <div className="buttons">
+                    <button className='draw_text' style={Object.assign({}, styles.colorSwatches.red, styles.button)} onClick={()=>this.setColor('#cb1313')}></button>
+                    <button className='draw_text' style={Object.assign({}, styles.colorSwatches.orange, styles.button)} onClick={()=>this.setColor('#f67d11')}></button>
+                    <button className='draw_text' style={Object.assign({}, styles.colorSwatches.yellow, styles.button)} onClick={()=>this.setColor('#ffcc00')}></button>
+                    <button className='draw_text' style={Object.assign({}, styles.colorSwatches.green, styles.button)} onClick={()=>this.setColor('#30b229')}></button>
+                    <button className='draw_text' style={Object.assign({}, styles.colorSwatches.blue, styles.button)} onClick={()=>this.setColor('#0d64e7')}></button>
+                    <button className='draw_text' style={Object.assign({}, styles.colorSwatches.purple, styles.button)} onClick={()=>this.setColor('#8916c5')}></button>
+                    <button className='draw_text' style={Object.assign({}, styles.colorSwatches.black, styles.button)} onClick={()=>this.setColor('black')}></button>
                 </div>
             </div>
         )

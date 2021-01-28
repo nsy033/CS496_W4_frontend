@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import Popup from "reactjs-popup";
 import ScreenCapture from "../ScreenCapture";
 import axios from 'axios';
+import cancel from './cancel_btn.png';
+import save from './save_btn.png';
 import "./style.css";
 
 class DesignCapture extends Component {
@@ -102,40 +104,38 @@ class DesignCapture extends Component {
       <ScreenCapture src={this.props.src} onEndCapture={this.handleScreenCapture}>
         {({ onStartCapture }) => (
           <>
-            <header>
-              <button onClick={onStartCapture}>Capture</button>
-            </header>
-              <img src={this.props.src} />
-              {/* <TestImage src = {this.props.src}/> */}
+            {/* <header> */}
+            
+              <img src={this.props.imgsrc} onClick={onStartCapture}/>
+              {/* <button >Capture</button> */}
+            {/* </header> */}
             <Popup open={this.state.open} modal closeOnDocumentClick>
               <div className="modal">
-                <div className="modal__header">
+                {/* <div className="modal__header">
                   <button onClick={this.closeModal}>&times;</button>
-                </div>
+                </div> */}
                 <div className="modal__body">
                   <div>
-                    <label>Title</label>
-                    <input
-                      type="text"
-                      onChange={this.handleOnChange}
-                      name="title"
-                      value={this.state.title}
-                    />
-                  </div><div>
-                    <label>Price</label>
-                    <input
-                      type="text"
-                      onChange={this.handleOnChange}
-                      name="price"
-                      value={this.state.price}
-                    />
-                  </div><div>
-                    <label>Private Repository</label>
-                    <input
-                      type="checkbox"
-                      checked= {this.state.checked === true}
-                      onChange={this.checkboxHandler}
-                    />
+                    <div >
+                      <label className="label_text">Title</label> <br/> <label className="label_text">Price</label> <br/> <label className="label_text">Private</label>
+                    </div>
+
+                    <div style={{marginLeft: '60px', marginTop: '-63px'}}>
+                      <input
+                        type="text"
+                        onChange={this.handleOnChange}
+                        name="title"
+                        value={this.state.title}/><br/>
+                      <input
+                        type="text"
+                        onChange={this.handleOnChange}
+                        name="price"
+                        value={this.state.price}/><br/>
+                      <input
+                        type="checkbox"
+                        checked= {this.state.checked === true}
+                        onChange={this.checkboxHandler}/>
+                    </div>
                   </div>
                   <div className="image__container">
                     {screenCapture && (
@@ -144,8 +144,10 @@ class DesignCapture extends Component {
                   </div>
                 </div>
                 <div className="modal__footer">
-                  <button onClick={this.handleSave}>Save</button>
-                  <button onClick={this.closeModal}>Cancel</button>
+                  <img src={cancel} height="27px" onClick={this.closeModal} className="popup_btn"/>
+                  <img src={save} height="27px" onClick={this.handleSave} className="popup_btn"/>
+                  {/* <button onClick={this.closeModal}>Cancel</button>
+                  <button onClick={this.handleSave}>Save</button> */}
                 </div>
                 {/* {screenCapture && <img src={screenCapture} alt="screen capture" />} */}
               </div>
