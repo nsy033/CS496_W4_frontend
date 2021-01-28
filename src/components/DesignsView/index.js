@@ -4,11 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Design from '../Design';
 import './style.css';
-
 const styles = theme => ({
   root: {
     padding: theme.spacing(5),
-    background: '#eeeeee'
+    background: '#EEEEEE'
   },
   paper: {
     padding: theme.spacing(3),
@@ -16,9 +15,35 @@ const styles = theme => ({
     color: theme.palette.text.primary,
   },
 });
-
 function DesignsView (props) {
     const [designInfo, setDesignInfo] = useState([]);
+    // const [popularState, setpopularState] = useState(false);
+    const openPopular = () => {
+        // setpopularState(true);
+        axios.get("http://192.249.18.241:4000/design/popular").then(
+            (res)=>{
+                setDesignInfo(res.data);
+                console.log(res.data);
+                console.log(designInfo);
+            }
+        )
+        .catch(function (error) {
+            console.log(error);
+        });
+    };
+    const closePopular = () => {
+        // setpopularState(false);
+        axios.get("http://192.249.18.241:4000/design/all").then(
+            (res)=>{
+                setDesignInfo(res.data);
+                console.log(res.data);
+                console.log(designInfo);
+            }
+        )
+        .catch(function (error) {
+            console.log(error);
+        });
+    };
     useEffect(()=>{
         axios.get("http://192.249.18.241:4000/design/all").then(
             (res)=>{
@@ -31,11 +56,11 @@ function DesignsView (props) {
             console.log(error);
         });
     },[]);
-
     return (
         <div>
             <div>DesignsView</div>
-
+            <button onClick={openPopular}>조회순</button>
+            <button onClick={closePopular}>시간순</button>
             <div>
                 <Grid container spacing={2}>
                 {designInfo.map((val, idx) =>(
